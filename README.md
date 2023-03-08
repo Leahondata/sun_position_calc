@@ -29,7 +29,9 @@ The data output based on the user's IP location includes the following:
 ## Working Examples
 
 Output example of message to user for given location:
+
 ![image1](https://user-images.githubusercontent.com/124433926/223827801-d9bfb236-9536-4299-b328-0001f016fb4c.png)
 
 Output example of message to user if the API server is down:
+
 ![image2](https://user-images.githubusercontent.com/124433926/223827735-6fcd355b-381d-4d1a-b753-cacb1402df1a.png)
