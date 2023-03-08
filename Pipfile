@@ -7,8 +7,6 @@ name = "pypi"
 requests = "*"
 bs4 = "*"
 pandas = "*"
-socks = "*"
-pysocks = "*"
 
 [dev-packages]
 autopep8 = "*"

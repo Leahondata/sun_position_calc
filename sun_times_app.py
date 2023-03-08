@@ -50,11 +50,13 @@ for header in table.find_all('th'):
 # Separate header titles from days of the month.
 def separate_headers(headers_data):
     header_titles = headers_data[:8]
-    header_titles.insert(7, '')
+    header_titles.insert(8, '')
     header_titles.extend([headers_data[8], ''])
     sub_headers = [''] * 7 + headers_data[9:13]
     month_days = headers_data[13:]
     return header_titles, sub_headers, month_days
+
+
 header_titles, sub_headers, month_days = separate_headers(headers_data)
 
 
@@ -87,6 +89,6 @@ today_single = int(loc_details['Date_Time'].split(' ')[0].split('-')[2]) - 1
 
 
 # Print the specified date with clean formatting for visibility.
-row = df.loc[today_single].to_frame().rename(columns={6: ''})
+row = df.loc[today_single].to_frame().rename(columns={7: ''})
 print(row)
 print('-----------------------------------------', '\n')
