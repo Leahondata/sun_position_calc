@@ -1,5 +1,6 @@
 import requests
 import unicodedata
+from api_key import api_key
 
 
 # API requests for city, region, and IP info.
@@ -12,7 +13,7 @@ ip = response.json()["ip"]
 
 # Second API request for country name, date, and time info.
 response4 = requests.get(
-    f"https://api.ipgeolocation.io/ipgeo?apiKey=9c8f5da949d3451c87bf5893d60dc70d&ip={ip}")
+    f"https://api.ipgeolocation.io/ipgeo?apiKey={api_key}&ip={ip}")
 country_name = response4.json()['country_name']
 date_time = response4.json()['time_zone']['current_time']
 
