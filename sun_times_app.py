@@ -1,23 +1,31 @@
 from api_get_requests import loc_details
 from bs4 import BeautifulSoup
 import pandas as pd
-import numpy as np
 import requests
 
 
-# Detect location of user using their IP address and notify them of the location they have been located at.
-print(
-    f"\n--------------Your location--------------\n\n{loc_details['City']}, \n{loc_details['Region']}, \n{loc_details['Country_Name']}.")
+# Detect location of user using their IP address.
+print('\n--------------Your location--------------')
+print(f"\n{loc_details['City']},")
+print(f"{loc_details['Region']},")
+print(f"{loc_details['Country_Name']}.")
 
 
 # Create and return url with imported data from location_detector.
 url = (f"https://sunrise-sunset.org/search?location={loc_details['City']}")
-print(url)
 
 
-# Get HTML from url using HTML request to get json data.
+# Make the request using the generated IP address.
 response = requests.get(url)
-print(response)
+status = response.status_code
+
+
+# Handle error codes.
+if status != 200:
+    print('\n----------------------------------------------------------------')
+    print('The server is currently down. Please try again in a few minutes.')
+    print('----------------------------------------------------------------\n')
+    sys.exit()
 
 
 # Convert response to beautiful soup object.
@@ -31,13 +39,6 @@ table = soup_object.find('table', {'id': 'month'})
 # Extract the table data and save it in a variable.
 table_data = [[cell.text.strip() for cell in row.find_all('td')]
               for row in table.find_all('tr')]
-# Optimized the code above from the previous code below:
-# table_data = []
-# for row in table.find_all('tr'):
-# row_data = []
-# for cell in row.find_all('td'):
-# row_data.append(cell.text.strip())
-# table_data.append(row_data)
 
 
 # Extract column headers.
@@ -51,29 +52,9 @@ def separate_headers(headers_data):
     header_titles = headers_data[:8]
     header_titles.insert(7, '')
     header_titles.extend([headers_data[8], ''])
-
     sub_headers = [''] * 7 + headers_data[9:13]
-
     month_days = headers_data[13:]
-# Optimized the code above from the previous code below:
-    # for i in headers_data[:8]:
-    #     header_titles.append(i)
-    # for i in headers_data[7:8]:
-    #     header_titles.append('')
-    # for i in headers_data[8:9]:
-    #     header_titles.append(i)
-    #     header_titles.append('')
-
-    # for i in headers_data[:7]:
-    #     sub_headers.append('')
-    # for i in headers_data[9:13]:
-    #     sub_headers.append(i)
-
-    # for i in headers_data[13:]:
-    #     month_days.append(i)
     return header_titles, sub_headers, month_days
-
-
 header_titles, sub_headers, month_days = separate_headers(headers_data)
 
 
@@ -103,12 +84,6 @@ print("---------------Today's data--------------")
 
 # Get today's date from loc_details['Date_Time'].
 today_single = int(loc_details['Date_Time'].split(' ')[0].split('-')[2]) - 1
-# Optimized the code above from the previous code below:
-# split_date_time = loc_details['Date_Time'].split(' ')
-# date = split_date_time[0]
-# year_month_day = date.split('-')
-# today = year_month_day[2]
-# today_single = (int(today)-1)
 
 
 # Print the specified date with clean formatting for visibility.
