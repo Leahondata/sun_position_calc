@@ -2,7 +2,7 @@ from api_get_requests import loc_details
 from bs4 import BeautifulSoup
 import pandas as pd
 import requests
-
+import sys
 
 # Detect location of user using their IP address.
 print('\n--------------Your location--------------')
@@ -21,7 +21,7 @@ status = response.status_code
 
 
 # Handle error codes.
-if status != 200:
+if status == 200:
     print('\n----------------------------------------------------------------')
     print('The server is currently down. Please try again in a few minutes.')
     print('----------------------------------------------------------------\n')
