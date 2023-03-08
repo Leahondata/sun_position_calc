@@ -3,9 +3,9 @@ This project takes the user's IP address as input to return sun data relevant to
 
 ## Installation
 After cloning the repository:
-1. Make sure to activate the virtual environment. Can be installed by 'pip install pipenv'.
+1. Make sure to activate the virtual environment. Can be installed by `pip install pipenv`.
 2. Change directory to project directory.
-3. Install dependencies by executing 'pipenv install'.
+3. Install dependencies by executing `pipenv install`.
 4. Activate the virtual environment by executing `pipenv shell`.
 5. If you are running the project from a code editor like VScode, restart the code editor to be able to see the new virtual enviroment. 
 
