@@ -10,7 +10,8 @@ After cloning the repository:
 5. If you are running the project from a code editor like VScode, restart the code editor to be able to see the new virtual enviroment. 
 
 ## Usage
-The program will automatically return your location to you in the terminal output.
+To start the program, execute `sun_times_app.py`. 
+The program `sun_times_app.py` will automatically return your location to you in the terminal output.
 Next will follow the sun data based on that location.
 
 The data output based on the user's IP location includes the following;
@@ -30,7 +31,7 @@ Optionally, you can generate two CSV files;
   - One with the monthly data.
   - Another with the data for today's date only.
 
-The default is set to not generate these CSV files. If you wish to generate them, you must update the final function within sun_times_app.py:
+The default is set to not generate these CSV files. If you wish to generate them, you must update the final function within `sun_times_app.py`:
   Change`display_output` from `gen_csv=False` to `gen_csv=True`.
                           
 ## Working Examples
